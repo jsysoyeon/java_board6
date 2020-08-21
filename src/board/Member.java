@@ -7,6 +7,7 @@ public class Member {
 	
 	MemberManage mm = new MemberManage();
 	ArticleManage am = new ArticleManage();
+	ArticleDao dao = new ArticleDao();
 	
 	public void start() {
 
@@ -36,14 +37,19 @@ public class Member {
 			
 			else if(s.equals("login")) {
 
-				if(check() == 1) {
+				System.out.print("아이디 : ");
+				String id = sc.nextLine();
+				System.out.print("비밀번호 : ");
+				String pw = sc.nextLine();
+				
+				if(check(id, pw) == 1) {
 					System.out.println("로그인 성공");
 					am.print();
 				}
-				else if(check() == 0) {
+				else if(check(id, pw) == 0) {
 					System.out.println("틀린 비밀번호입니다.");
 				}
-				else if(check() == -1) {
+				else if(check(id, pw) == -1) {
 					System.out.println("틀린 아이디입니다.");
 				}
 			}
@@ -51,15 +57,11 @@ public class Member {
 		
 	}
 	
-	public int check() {
+	public int check(String id, String pw) {
 		int index;
 		Scanner sc = new Scanner(System.in);
 		ArrayList<Article> members = mm.memberData();
 		
-		System.out.print("아이디 : ");
-		String id = sc.nextLine();
-		System.out.print("비밀번호 : ");
-		String pw = sc.nextLine();
 		
 		for(int i = 0; i < members.size(); i++) {
 			Article member = members.get(i);
@@ -71,15 +73,11 @@ public class Member {
 					return index = 0;
 				}
 			}
-			if(!(member.getMember().equals(id))) {
+			else {
 				return index = -1;
 			}
-//			else {
-//				return index = -1;
-//			}
 		}
 		
 		return 10;
 	}
-
 }

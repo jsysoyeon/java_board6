@@ -14,6 +14,7 @@ public class App {
 		ArticleManage am = new ArticleManage();
 		Member m = new Member();
 		MemberManage mm = new MemberManage();
+		Board b = new Board();
 		
 		while(true) {
 			System.out.println("로그인 / 회원가입 : join");
@@ -30,7 +31,7 @@ public class App {
 				break;
 			}
 			else if(s.equals("board")) {
-				am.print();
+				b.print();
 			}
 
 		}

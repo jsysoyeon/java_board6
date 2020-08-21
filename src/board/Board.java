@@ -3,18 +3,17 @@ package board;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class ArticleManage {
+public class Board {
 
 	ArticleDao dao = new ArticleDao();
-	MemberManage mm = new MemberManage();
+	Member m = new Member();
 	
 	public void print() {
 		Scanner sc = new Scanner(System.in);
 		ArticleDao dao = new ArticleDao();
-		MemberManage mm = new MemberManage();
 		String title;
 		String body;
-		print p = new print();
+		print_menu p = new print_menu();
 		
 		while(true) {
 			System.out.println("");
@@ -24,19 +23,9 @@ public class ArticleManage {
 			
 			if(s.equals("add")) {
 				
-				System.out.println("");
-				System.out.println("제목을 입력하십시오.");
-				title = sc.nextLine();
-				System.out.println("내용을 입력하십시오.");
-				body = sc.nextLine();
+				System.out.println("로그인해주십시오.");
+				m.start();
 				
-				Article article = new Article();
-				article.setTitle(title);
-				article.setBody(body);
-				
-				dao.addData(article);
-
-				ArrayList<Article> articles = dao.listData(); 
 			}
 			
 			else if(s.equals("list")) {
@@ -144,7 +133,7 @@ public class ArticleManage {
 	}
 }
 
-class print {
+class print_menu {
 	void menu() {
 		System.out.println("원하는 기능에 맞게 입력해주십시오.");
 		System.out.println("게시물 추가(로그인 후 이용가능) : add");
