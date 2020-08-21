@@ -15,6 +15,7 @@ public class Member {
 		Scanner sc = new Scanner(System.in);
 		String Id;
 		String Pw;
+		String name;
 		
 		while(true) {
 			System.out.println("로그인 : login / 회원가입 : signup");
@@ -23,14 +24,18 @@ public class Member {
 			
 			if(s.equals("signup")) {
 				System.out.println("");
-				System.out.println("아이디를 입력하십시오.");
+				System.out.println("아이디를 입력해주십시오.");
 				Id = sc.nextLine();
-				System.out.println("비밀번호를 입력하십시오.");
+				System.out.println("비밀번호를 입력해주십시오.");
 				Pw = sc.nextLine();
+				System.out.println("이름을 입력해주십시오.");
+				name = sc.nextLine();
+				System.out.println("가입이 완료되었습니다.");
 				
 				Article member = new Article();
 				member.setMember(Id);
 				member.setPassword(Pw);
+				member.setName(name);
 				
 				mm.signup(member);
 			}
@@ -43,7 +48,6 @@ public class Member {
 				String pw = sc.nextLine();
 				
 				if(check(id, pw) == 1) {
-					System.out.println("로그인 성공");
 					am.print();
 				}
 				else if(check(id, pw) == 0) {
@@ -67,6 +71,7 @@ public class Member {
 			Article member = members.get(i);
 			if(member.getMember().equals(id)) {
 				if(member.getPassword().equals(pw)) {
+					System.out.println(member.getName() + "님! 환영합니다.");
 					return index = 1;
 				}
 				else {
