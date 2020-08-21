@@ -46,43 +46,10 @@ public class Member {
 				String id = sc.nextLine();
 				System.out.print("비밀번호 : ");
 				String pw = sc.nextLine();
-				
-				if(check(id, pw) == 1) {
-					am.print();
-				}
-				else if(check(id, pw) == 0) {
-					System.out.println("틀린 비밀번호입니다.");
-				}
-				else if(check(id, pw) == -1) {
-					System.out.println("틀린 아이디입니다.");
-				}
+
+
 			}
 		}
 		
-	}
-	
-	public int check(String id, String pw) {
-		int index;
-		Scanner sc = new Scanner(System.in);
-		ArrayList<Article> members = mm.memberData();
-		
-		
-		for(int i = 0; i < members.size(); i++) {
-			Article member = members.get(i);
-			if(member.getMember().equals(id)) {
-				if(member.getPassword().equals(pw)) {
-					System.out.println(member.getName() + "님! 환영합니다.");
-					return index = 1;
-				}
-				else {
-					return index = 0;
-				}
-			}
-			else {
-				return index = -1;
-			}
-		}
-		
-		return 10;
 	}
 }
